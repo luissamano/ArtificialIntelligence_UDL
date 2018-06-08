@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="fb25313886e8424d85c68ee88c25fdc8" Name="Diagram1">
+        <EntityTypeShape EntityType="dbConocimientoModel.Objecto" Width="1.5" PointX="0.75" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbConocimientoModel.Animado" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbConocimientoModel.Color" Width="1.5" PointX="3" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbConocimientoModel.Genero" Width="1.5" PointX="3" PointY="5.875" IsExpanded="true" />
+        <AssociationConnector Association="dbConocimientoModel.FK_Animado_Objecto" ManuallyRouted="false" />
+        <AssociationConnector Association="dbConocimientoModel.FK_Color_Objecto" ManuallyRouted="false" />
+        <AssociationConnector Association="dbConocimientoModel.FK_Genero_Objecto" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

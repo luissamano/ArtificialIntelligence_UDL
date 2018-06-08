@@ -1,0 +1,287 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="dbConocimientoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'dbConocimiento.dbo.Animado' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="Animado">
+          <Key>
+            <PropertyRef Name="Id_Obj" />
+          </Key>
+          <Property Name="Id_Obj" Type="int" Nullable="false" />
+          <Property Name="Estado" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'dbConocimiento.dbo.Color' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="Color">
+          <Key>
+            <PropertyRef Name="Id_Obj" />
+          </Key>
+          <Property Name="Id_Obj" Type="int" Nullable="false" />
+          <Property Name="Color" Type="varchar" MaxLength="40" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'dbConocimiento.dbo.Genero' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="Genero">
+          <Key>
+            <PropertyRef Name="Id_Obj" />
+          </Key>
+          <Property Name="Id_Obj" Type="int" Nullable="false" />
+          <Property Name="Genero" Type="varchar" MaxLength="3" />
+        </EntityType>
+        <EntityType Name="Objecto">
+          <Key>
+            <PropertyRef Name="Id_Obj" />
+          </Key>
+          <Property Name="Id_Obj" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Definicion" Type="text" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Animado_Objecto">
+          <End Role="Objecto" Type="Self.Objecto" Multiplicity="1" />
+          <End Role="Animado" Type="Self.Animado" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Objecto">
+              <PropertyRef Name="Id_Obj" />
+            </Principal>
+            <Dependent Role="Animado">
+              <PropertyRef Name="Id_Obj" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Color_Objecto">
+          <End Role="Objecto" Type="Self.Objecto" Multiplicity="1" />
+          <End Role="Color" Type="Self.Color" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Objecto">
+              <PropertyRef Name="Id_Obj" />
+            </Principal>
+            <Dependent Role="Color">
+              <PropertyRef Name="Id_Obj" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Genero_Objecto">
+          <End Role="Objecto" Type="Self.Objecto" Multiplicity="1" />
+          <End Role="Genero" Type="Self.Genero" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Objecto">
+              <PropertyRef Name="Id_Obj" />
+            </Principal>
+            <Dependent Role="Genero">
+              <PropertyRef Name="Id_Obj" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="spConocimiento" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Opc" Type="int" Mode="In" />
+          <Parameter Name="Nombre" Type="varchar" Mode="In" />
+          <Parameter Name="Def" Type="varchar" Mode="In" />
+          <Parameter Name="Col" Type="varchar" Mode="In" />
+          <Parameter Name="Ani" Type="varchar" Mode="In" />
+          <Parameter Name="Gen" Type="varchar" Mode="In" />
+          <Parameter Name="Cont" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="dbConocimientoModelStoreContainer">
+          <EntitySet Name="Objecto" EntityType="Self.Objecto" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Animado" EntityType="Self.Animado" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Animado].[Id_Obj] AS [Id_Obj], 
+    [Animado].[Estado] AS [Estado]
+    FROM [dbo].[Animado] AS [Animado]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Color" EntityType="Self.Color" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Color].[Id_Obj] AS [Id_Obj], 
+    [Color].[Color] AS [Color]
+    FROM [dbo].[Color] AS [Color]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Genero" EntityType="Self.Genero" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Genero].[Id_Obj] AS [Id_Obj], 
+    [Genero].[Genero] AS [Genero]
+    FROM [dbo].[Genero] AS [Genero]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_Animado_Objecto" Association="Self.FK_Animado_Objecto">
+            <End Role="Objecto" EntitySet="Objecto" />
+            <End Role="Animado" EntitySet="Animado" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Color_Objecto" Association="Self.FK_Color_Objecto">
+            <End Role="Objecto" EntitySet="Objecto" />
+            <End Role="Color" EntitySet="Color" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Genero_Objecto" Association="Self.FK_Genero_Objecto">
+            <End Role="Objecto" EntitySet="Objecto" />
+            <End Role="Genero" EntitySet="Genero" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="dbConocimientoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Objecto">
+          <Key>
+            <PropertyRef Name="Id_Obj" />
+          </Key>
+          <Property Name="Id_Obj" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Definicion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Animado" Relationship="Self.FK_Animado_Objecto" FromRole="Objecto" ToRole="Animado" />
+          <NavigationProperty Name="Color" Relationship="Self.FK_Color_Objecto" FromRole="Objecto" ToRole="Color" />
+          <NavigationProperty Name="Genero" Relationship="Self.FK_Genero_Objecto" FromRole="Objecto" ToRole="Genero" />
+        </EntityType>
+        <EntityType Name="Animado">
+          <Key>
+            <PropertyRef Name="Id_Obj" />
+          </Key>
+          <Property Name="Id_Obj" Type="Int32" Nullable="false" />
+          <Property Name="Estado" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Objecto" Relationship="Self.FK_Animado_Objecto" FromRole="Animado" ToRole="Objecto" />
+        </EntityType>
+        <EntityType Name="Color">
+          <Key>
+            <PropertyRef Name="Id_Obj" />
+          </Key>
+          <Property Name="Id_Obj" Type="Int32" Nullable="false" />
+          <Property Name="Color1" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Objecto" Relationship="Self.FK_Color_Objecto" FromRole="Color" ToRole="Objecto" />
+        </EntityType>
+        <EntityType Name="Genero">
+          <Key>
+            <PropertyRef Name="Id_Obj" />
+          </Key>
+          <Property Name="Id_Obj" Type="Int32" Nullable="false" />
+          <Property Name="Genero1" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Objecto" Relationship="Self.FK_Genero_Objecto" FromRole="Genero" ToRole="Objecto" />
+        </EntityType>
+        <Association Name="FK_Animado_Objecto">
+          <End Role="Objecto" Type="Self.Objecto" Multiplicity="1" />
+          <End Role="Animado" Type="Self.Animado" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Objecto">
+              <PropertyRef Name="Id_Obj" />
+            </Principal>
+            <Dependent Role="Animado">
+              <PropertyRef Name="Id_Obj" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Color_Objecto">
+          <End Role="Objecto" Type="Self.Objecto" Multiplicity="1" />
+          <End Role="Color" Type="Self.Color" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Objecto">
+              <PropertyRef Name="Id_Obj" />
+            </Principal>
+            <Dependent Role="Color">
+              <PropertyRef Name="Id_Obj" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Genero_Objecto">
+          <End Role="Objecto" Type="Self.Objecto" Multiplicity="1" />
+          <End Role="Genero" Type="Self.Genero" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Objecto">
+              <PropertyRef Name="Id_Obj" />
+            </Principal>
+            <Dependent Role="Genero">
+              <PropertyRef Name="Id_Obj" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="dbConocimientoEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Objecto" EntityType="Self.Objecto" />
+          <EntitySet Name="Animado" EntityType="Self.Animado" />
+          <EntitySet Name="Color" EntityType="Self.Color" />
+          <EntitySet Name="Genero" EntityType="Self.Genero" />
+          <AssociationSet Name="FK_Animado_Objecto" Association="Self.FK_Animado_Objecto">
+            <End Role="Objecto" EntitySet="Objecto" />
+            <End Role="Animado" EntitySet="Animado" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Color_Objecto" Association="Self.FK_Color_Objecto">
+            <End Role="Objecto" EntitySet="Objecto" />
+            <End Role="Color" EntitySet="Color" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Genero_Objecto" Association="Self.FK_Genero_Objecto">
+            <End Role="Objecto" EntitySet="Objecto" />
+            <End Role="Genero" EntitySet="Genero" />
+          </AssociationSet>
+          <FunctionImport Name="spConocimiento" ReturnType="Collection(Int32)">
+            <Parameter Name="Opc" Mode="In" Type="Int32" />
+            <Parameter Name="Nombre" Mode="In" Type="String" />
+            <Parameter Name="Def" Mode="In" Type="String" />
+            <Parameter Name="Col" Mode="In" Type="String" />
+            <Parameter Name="Ani" Mode="In" Type="String" />
+            <Parameter Name="Gen" Mode="In" Type="String" />
+            <Parameter Name="Cont" Mode="In" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="dbConocimientoModelStoreContainer" CdmEntityContainer="dbConocimientoEntities">
+          <EntitySetMapping Name="Objecto">
+            <EntityTypeMapping TypeName="dbConocimientoModel.Objecto">
+              <MappingFragment StoreEntitySet="Objecto">
+                <ScalarProperty Name="Id_Obj" ColumnName="Id_Obj" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Definicion" ColumnName="Definicion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Animado">
+            <EntityTypeMapping TypeName="dbConocimientoModel.Animado">
+              <MappingFragment StoreEntitySet="Animado">
+                <ScalarProperty Name="Id_Obj" ColumnName="Id_Obj" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Color">
+            <EntityTypeMapping TypeName="dbConocimientoModel.Color">
+              <MappingFragment StoreEntitySet="Color">
+                <ScalarProperty Name="Id_Obj" ColumnName="Id_Obj" />
+                <ScalarProperty Name="Color1" ColumnName="Color" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Genero">
+            <EntityTypeMapping TypeName="dbConocimientoModel.Genero">
+              <MappingFragment StoreEntitySet="Genero">
+                <ScalarProperty Name="Id_Obj" ColumnName="Id_Obj" />
+                <ScalarProperty Name="Genero1" ColumnName="Genero" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="spConocimiento" FunctionName="dbConocimientoModel.Store.spConocimiento" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

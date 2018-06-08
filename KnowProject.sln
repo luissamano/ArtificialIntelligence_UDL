@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.27428.2005
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KnowDesktop", "KnowDesktop\KnowDesktop.csproj", "{6F01BC96-A509-4786-B140-0411FEA686E5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Know.WEB", "Know.WEB\Know.WEB.csproj", "{757FF66A-1C52-41BA-8EB5-D4E5BF368EAD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Know.WPF", "Know.WPF\Know.WPF.csproj", "{A6DB6E64-B4E1-442F-992B-2BDB2AEA22EE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,10 @@ Global
 		{6F01BC96-A509-4786-B140-0411FEA686E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6F01BC96-A509-4786-B140-0411FEA686E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6F01BC96-A509-4786-B140-0411FEA686E5}.Release|Any CPU.Build.0 = Release|Any CPU
-		{757FF66A-1C52-41BA-8EB5-D4E5BF368EAD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{757FF66A-1C52-41BA-8EB5-D4E5BF368EAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{757FF66A-1C52-41BA-8EB5-D4E5BF368EAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{757FF66A-1C52-41BA-8EB5-D4E5BF368EAD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A6DB6E64-B4E1-442F-992B-2BDB2AEA22EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A6DB6E64-B4E1-442F-992B-2BDB2AEA22EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A6DB6E64-B4E1-442F-992B-2BDB2AEA22EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A6DB6E64-B4E1-442F-992B-2BDB2AEA22EE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
