@@ -5,57 +5,25 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Know.WPF"
         mc:Ignorable="d"
-        Title="Know" Height="380" Width="800"
-        >
-
-    <Grid HorizontalAlignment="Center" Height="320" Width="650" Background="AliceBlue" >
-
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="200" />
-        </Grid.ColumnDefinitions>
-        
-        <Grid.RowDefinitions>
-            <RowDefinition Height="25" />
-            <RowDefinition Height="25" />
-            <RowDefinition Height="25" />
-            <RowDefinition Height="25" />
-            <RowDefinition Height="25" />
-
-            <RowDefinition Height="25" />
-            <RowDefinition Height="25" />
-
-            <RowDefinition Height="25" />
-            <RowDefinition Height="25" />
-
-            <RowDefinition Height="25" />
-            <RowDefinition Height="25" />
-            
-            <RowDefinition Height="5" />
-            <RowDefinition Height="25" />
-        </Grid.RowDefinitions>
+        Background="Azure"
+        Title="Know" Height="342.701" Width="846.496" >
 
 
-        <Label Grid.Row="0" Content="Nombre de Objecto" />
-        <TextBox Grid.Row="1" x:Name="tbBuscar" BorderBrush="DeepSkyBlue" BorderThickness="1" />
-        <Button Grid.Row="2" Name="btnBuscar" Content="Buscar" Width="100" HorizontalAlignment="Right" />
+    <Grid  Margin="10,10,10,10" Background="AliceBlue" >
+        <Label Content="Nombre" Margin="53,38,691,195" FontWeight="Bold" />
+        <TextBox BorderBrush="Black"  BorderThickness="2" HorizontalAlignment="Left" Margin="53,70,0,0"  VerticalAlignment="Top" Height="22" Width="492" Name="tbBuscar"/>
 
-        <Label Grid.Row="3" Content="Definicion de Objecto" />
-        <TextBox Grid.Row="4" Grid.Column="0" x:Name="tbDef" BorderBrush="DeepSkyBlue" BorderThickness="1" IsEnabled="False" />
+        <Label Content="Definicion" Margin="53,146,691,102" FontWeight="Bold" RenderTransformOrigin="0.556,1.345" />
+        <TextBox BorderBrush="Black"  BorderThickness="2"  HorizontalAlignment="Left" Margin="53,175,0,0"  VerticalAlignment="Top" Height="83" Width="492" Name="tbDef" IsEnabled="False"/>
 
-        <Label Grid.Row="5" Content="Color de Objecto" />
-        <TextBox  Grid.Row="6" Grid.Column="0" x:Name="tbColor" BorderBrush="DeepSkyBlue" BorderThickness="1" IsEnabled="False" />
-
-        <Label Grid.Row="7" Content="Estado" />
-        <ComboBox  Grid.Row="8" Grid.Column="0" x:Name="cbEstado" BorderThickness="1" IsEnabled="False"/>
-
-
-        <Label Grid.Row="9" Content="Genero" />
-        <ComboBox  Grid.Row="10" Grid.Column="0" x:Name="cbGenero" BorderBrush="DeepSkyBlue" BorderThickness="1" IsEnabled="False" />
-
-        <Button Grid.Row="12" Name="btnAgregar" Content="Agregar conocimiento" Width="150" HorizontalAlignment="Right" IsEnabled="False" />
-        
-        <ListView Grid.Column="1" Grid.Row="5"/>
+        <Label Content="Color" Margin="579,112,195,148" RenderTransformOrigin="10.417,2.792" FontWeight="Bold" />
+        <TextBox BorderBrush="Black"  BorderThickness="2"  HorizontalAlignment="Left" Margin="579,136,0,0"  VerticalAlignment="Top" Height="22" Width="204" Name="tbColor"  IsEnabled="False"/>
+        <ComboBox BorderBrush="Black"  BorderThickness="2" HorizontalAlignment="Left" Margin="579,187,0,0" VerticalAlignment="Top" Width="204" Name="cbEstado"  IsEnabled="False"/>
+        <ComboBox BorderBrush="Black"  BorderThickness="2" HorizontalAlignment="Left" Margin="579,236,0,0" VerticalAlignment="Top" Width="204" Name="cbGenero"  IsEnabled="False"/>
+        <Button BorderBrush="CadetBlue"  BorderThickness="2"  Content="Buscar" HorizontalAlignment="Left" Margin="579,70,0,0" VerticalAlignment="Top" Width="94" Name="btnBuscar" FontWeight="Bold"/>
+        <Button BorderBrush="CadetBlue"  BorderThickness="2" Content="Guardar" HorizontalAlignment="Left" Margin="689,73,0,0" VerticalAlignment="Top" Width="94" Name="btnAgregar"  IsEnabled="False" FontWeight="Bold" />
+        <Label Content="Estado" Margin="579,158,155,102" RenderTransformOrigin="10.417,2.792" FontWeight="Bold" />
+        <Label Content="Genero" Margin="579,207,155,53" RenderTransformOrigin="10.417,2.792" FontWeight="Bold" />
 
     </Grid>
 

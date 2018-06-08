@@ -89,38 +89,42 @@ namespace Know.WPF
 
         private async void BtnBuscar_Click(object sender, RoutedEventArgs e)
         {
-            var cont = await method.GetUltimoNun();
-            var x = await method.GetConocimientos(tbBuscar.Text.ToLower().ToString());
-
-            if (x.Count == 0)
+            if (!tbBuscar.Text.ToString().Equals(""))
             {
-                result = System.Windows.Forms.MessageBox.Show
-                    ("No se encontro en la knowledge, deseas agregar el conocimiento",
-                    "Null", System.Windows.Forms.MessageBoxButtons.YesNo);
-            }
 
-            foreach (var item in x)
-            {
+                var cont = await method.GetUltimoNun();
+                var x = await method.GetConocimientos(tbBuscar.Text.ToLower().ToString());
+
                 if (x.Count == 0)
                 {
                     result = System.Windows.Forms.MessageBox.Show
                         ("No se encontro en la knowledge, deseas agregar el conocimiento",
                         "Null", System.Windows.Forms.MessageBoxButtons.YesNo);
                 }
-                else
-                {
 
-                    System.Windows.Forms.MessageBox.Show
-                    ($"{item.Genero} {item.Nombre} es {item.Definicion} y su color mas usual es {item.Color}",
-                     "Know", System.Windows.Forms.MessageBoxButtons.OK);
+                foreach (var item in x)
+                {
+                    if (x.Count == 0)
+                    {
+                        result = System.Windows.Forms.MessageBox.Show
+                            ("No se encontro en la knowledge, deseas agregar el conocimiento",
+                            "Null", System.Windows.Forms.MessageBoxButtons.YesNo);
+                    }
+                    else
+                    {
+
+                        System.Windows.Forms.MessageBox.Show
+                        ($"{item.Genero} {item.Nombre} es {item.Definicion} y su color mas usual es {item.Color}",
+                         "Know", System.Windows.Forms.MessageBoxButtons.OK);
+                    }
+                }
+
+                if (result == System.Windows.Forms.DialogResult.Yes)
+                {
+                    EnableControls();
                 }
             }
-
-            if (result == System.Windows.Forms.DialogResult.Yes)
-            {
-                EnableControls();
-            } 
         }
-
+        
     }
 }
